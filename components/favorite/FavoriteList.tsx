@@ -2,13 +2,15 @@ import React from 'react'
 import styles from './style';
 import { AreaRoom } from "../../types";
 import { Text, View, TouchableWithoutFeedback, Image  } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign} from '@expo/vector-icons';
+import { ProfilePicture } from '../profilepicture/ProfilePicture'
+import moment from 'moment'
 
-export type AreaListItemProps = {
+export type FeedListProps = {
     name : AreaRoom;
 }
-export const AreaList = (props: AreaListItemProps) => {
+export const FavoriteList = (props: FeedListProps) => {
     const { name } = props;
     const navigation = useNavigation();    
     const onClick = () => { 
@@ -17,18 +19,19 @@ export const AreaList = (props: AreaListItemProps) => {
             id: name.id,
             name: name.name,
             })
-        }
+        }    
   return (
     <TouchableWithoutFeedback onPress={onClick}>
         <View style={styles.container}>
+                <ProfilePicture image={name?.user?.imageUri} />
             <View style={styles.leftContainer}>
                 <View style={styles.townsContainer}>
                     <View style={styles.nameContainer}>
-                        <Text style={styles.name}>{name?.name}</Text>
+                        <Text style={styles.name}>{name?.user?.username}</Text>
                     </View>
                 </View>
-                <AntDesign name="staro" size={24} color="black" />
             </View>
+                <AntDesign name="star" size={24} color="black" />
         </View> 
     </TouchableWithoutFeedback>
   )

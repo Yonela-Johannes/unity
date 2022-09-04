@@ -1,18 +1,6 @@
-<Stack.Screen name="navigator" component={Navigator} options={{ title: "Communities" , headerTitleStyle:
-    {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
-    <View style={{marginLeft: 10}}>
-        <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
-    </View>
-    ),
-    headerRight: () => (
-    <View style={{flexDirection: 'row' , justifyContent: 'space-between' , alignItems: 'center' , width: 70,
-        marginRight: 5}}>
-        <TouchableOpacity>
-            <ProfilePicture
-                image={'https://media.istockphoto.com/photos/fit-woman-standing-outdoors-after-a-late-afternoon-trail-run-picture-id1347431090?k=20&m=1347431090&s=612x612&w=0&h=dR9y9JGuhbmxgVFof1kC-phxJFyzGGftasI3JUbtk0Q='} />
-              {/* <FontAwesome name="user-circle-o" size={22} color="black" /> */}
-            </TouchableOpacity>
-        </View>
-  )
-  }}
-/>
+#367f86
+
+
+#ECB22E
+
+                    <View style={{height: 5, borderRadius: 5, backgroundColor: "", width: `${progress * 100}%`}}></View>

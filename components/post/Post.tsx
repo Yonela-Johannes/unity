@@ -11,10 +11,7 @@ export const Post = (props: PostPops) => {
 
   return (
     <View>
-    {/* Left Container */}
-    {/* <Left /> */}
-    {/* Main Container */}
-    <Main />
+      <Main />
     </View>
   )
 }

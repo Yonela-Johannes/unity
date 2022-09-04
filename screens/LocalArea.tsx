@@ -3,8 +3,11 @@ import { ChatMessage } from '../components/message/index';
 import Input from '../components/input/Index';
 import chatRoomData from '../data/Chats';
 
-export const LocalArea = () => {
+export const LocalArea = (props) => {
 
+    console.log('Properties',props.route.params)
+    // const { name } = props.route.params
+    // console.log(name)
   return (
         <View style={styles.container} >
             <View style={styles.header}>
