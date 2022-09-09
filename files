@@ -4,3 +4,24 @@
 #ECB22E
 
                     <View style={{height: 5, borderRadius: 5, backgroundColor: "", width: `${progress * 100}%`}}></View>
+
+{{ title: "Communities" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+      <View style={{marginLeft: 10}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
+      </View>
+      ),
+      headerRight: () => (
+      <View style={{flexDirection: 'row' , justifyContent: 'space-between' , alignItems: 'center' , width: 70,
+          marginRight: 5}}>
+              {!image ? (
+                <FontAwesome name="user-circle-o" size={22} color="black" />
+              ) :
+              (
+                <ProfilePicture image={image} />
+              )}
+      </View>
+    )
+    }}
+
+    route.params.town

@@ -1,17 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useNavigation } from '@react-navigation/native';
 import {View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import feed from '../../data/feed'
 import { FavoriteList } from './FavoriteList';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { Loader } from '../customLoader/Loader';
 
 export type MainPops = {
     post: string,
 }
 
 export const Favorites = (props: MainPops) => {
+  const navigation = useNavigation()
+  const [loading, setLoading ] = useState(false)
+
+    const createTownHandler = () => {
+      navigation.navigate('Create Town')
+    }
 
   return (
-      <View style={styles.container}>            
+      <View style={styles.container}>
+        {loading && <Loader />}       
             <FlatList 
                 data={feed}
                 renderItem={({ item }) => 
@@ -21,7 +30,7 @@ export const Favorites = (props: MainPops) => {
                 />
                 <TouchableOpacity>
                     <View style={styles.addIcon}>
-                       <Feather name="edit" size={22} color="#ECB22E" />
+                       <Feather onPress={createTownHandler} name="edit" size={22} color="#ECB22E" />
                     </View>
                 </TouchableOpacity>
         </View> 

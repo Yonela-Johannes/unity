@@ -1,7 +1,5 @@
-import { View , Text} from "react-native";
-import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome, FontAwesome5, MaterialCommunityIcons, Entypo, MaterialIcons, Fontisto } from '@expo/vector-icons'
+import { MaterialCommunityIcons, MaterialIcons, Fontisto } from '@expo/vector-icons'
 import { MainTabParamList } from '../types';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';

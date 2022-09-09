@@ -1,23 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
-import { View, TextInput, TouchableOpacity, KeyboardAvoidingView, Image, Pressable, Platform, Text} from 'react-native';
+import React, { useState,useEffect } from "react";
 import styles from './styles';
-import { MaterialCommunityIcons, FontAwesome5, Entypo, Fontisto, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { View, TextInput, TouchableOpacity, KeyboardAvoidingView, Image, Pressable, Platform, Text} from 'react-native';
+import { MaterialCommunityIcons,Entypo } from '@expo/vector-icons';
 import axios from 'axios';
-import * as ImagePicker from 'expo-image-picker';
-import EmojiSelector, { Categories } from "react-native-emoji-selector";
-import { Audio, AVPlaybackStatus } from 'expo-av'
 
-const Input = () => {
-    const [soundUri, setSoundUri] = useState("")
-    const [sound, setSound] = useState<Audio.Sound | null>(null)
-    const [image, setImage] = useState(null);
-    const [ message, setMessage ] = useState();
+
+const Input = ({id, town}) => {
+    const [ message, setMessage ] = useState('');
     const [msg, setMsg ] = useState('')
-    const [recording, setRecording] = useState<Audio.Recording | null>(null);
-    const [paused, setPaused] = useState(true)
-    const [audioProgress, setAudioProgress] = useState(0)
-    const [audioDuration, setAudioDuration] = useState(0)
-    
+
     const onPress = async () => {
         if(!message){
             setMsg('Enter message!')
@@ -25,13 +16,12 @@ const Input = () => {
           const msgBody = {
             text: message,
           }
-          const results = await axios.post("https://unity-coms.herokuapp.com/api/emergency", msgBody)
+          // i need thhe id for this community but i don't knnow how to get it from this page
+          const results = await axios.post(`https://unity-coms.herokuapp.com/api/community/${id}`, msgBody)
           setMsg(results.data.data)
           setMessage('')
         }
     }
-
-    // audio
 
     return (
         <KeyboardAvoidingView style={styles.root} keyboardVerticalOffset={100}>
@@ -43,7 +33,6 @@ const Input = () => {
                     value={message}
                     placeholder={'Whats Happening?'}
                     />
-                    </View>
                     <TouchableOpacity onPress={onPress}>
                             <View style={styles.buttonContainer}>
                                 {!message?
@@ -52,7 +41,8 @@ const Input = () => {
                                     <MaterialCommunityIcons name="send-outline" size={24} color="white" /> 
                                 }
                             </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>                   
+                    </View>
             </View>
         </KeyboardAvoidingView>
     );

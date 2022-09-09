@@ -3,9 +3,10 @@ import { FlatList, View, StyleSheet} from 'react-native';
 import {ChatMessage} from '../components/message';
 import Input from '../components/input/Index';
 import axios from 'axios';
+import { Loader } from '../components/customLoader/Loader';
 
 export const EmergencyScreen = ()=> {
-    const [data, setData ] = useState([])
+    const [data, setData ] = useState()
     useEffect(() => {
         // emergency messages from the database
         const fetchData = async () => {
@@ -17,6 +18,7 @@ export const EmergencyScreen = ()=> {
 
     return (
         <View style={styles.container} >
+            {!data && <Loader />}
             <FlatList data={data}
             renderItem={({ item }) => <ChatMessage message={item} 
             />}

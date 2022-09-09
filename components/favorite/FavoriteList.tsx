@@ -3,7 +3,6 @@ import styles from './style';
 import { AreaRoom } from "../../types";
 import { Text, View, TouchableWithoutFeedback, Image  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign} from '@expo/vector-icons';
 import { ProfilePicture } from '../profilepicture/ProfilePicture'
 import moment from 'moment'
 
@@ -31,7 +30,6 @@ export const FavoriteList = (props: FeedListProps) => {
                     </View>
                 </View>
             </View>
-                <AntDesign name="star" size={24} color="black" />
         </View> 
     </TouchableWithoutFeedback>
   )

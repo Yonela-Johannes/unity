@@ -1,8 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Left } from './left/Left'
 import { Main } from './main/Main'
-
 export type PostPops = {
     post: string,
 }

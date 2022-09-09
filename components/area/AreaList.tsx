@@ -1,21 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { StyleSheet, Text, View , TouchableOpacity, Image, Platform, TouchableWithoutFeedback} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import styles from './style';
 import { AreaRoom } from "../../types";
-import { Text, View, TouchableWithoutFeedback, Image  } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 export type AreaListItemProps = {
-    name : AreaRoom;
+    town : AreaRoom;
 }
 export const AreaList = (props: AreaListItemProps) => {
-    const { name } = props;
+    const { town } = props;
     const navigation = useNavigation();    
     const onClick = () => { 
         // Navigate to chat room with this townroom 
         navigation.navigate('LocalArea', {
-            id: name.id,
-            name: name.name,
+            id: town.community_id,
+            town: town.community_name,
             })
         }
   return (
@@ -24,11 +24,10 @@ export const AreaList = (props: AreaListItemProps) => {
             <View style={styles.leftContainer}>
                 <View style={styles.townsContainer}>
                     <View style={styles.nameContainer}>
-                        <Text style={styles.name}>{name?.name}</Text>
+                        <Text style={styles.town}>{town?.community_name}</Text>
                     </View>
                 </View>
-                <AntDesign name="staro" size={24} color="black" />
-            </View>
+            </View>      
         </View> 
     </TouchableWithoutFeedback>
   )

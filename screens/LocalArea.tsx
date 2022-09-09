@@ -1,23 +1,33 @@
-import { FlatList, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { ChatMessage } from '../components/message/index';
-import Input from '../components/input/Index';
+import React, {useState, useEffect} from 'react'
+import { ProfilePicture } from '../components/profilepicture/ProfilePicture';
+import * as ImagePicker from 'expo-image-picker';
+import {FlatList ,StyleSheet, Text, View , TouchableOpacity, Image, Platform, TouchableWithoutFeedback} from 'react-native';
+import { AreasChatRoom } from '../components/message/AreasChatRoom';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import Input from '../components/roomInput/Index';
 import chatRoomData from '../data/Chats';
+import axios from 'axios';
+import { Loader } from '../components/customLoader/Loader';
 
 export const LocalArea = (props) => {
-
-    console.log('Properties',props.route.params)
-    // const { name } = props.route.params
-    // console.log(name)
+    const [image, setImage] = useState(null);
+    const [messages, setMessages] = useState();
+    const [msg, setMsg ] = useState('');
+    const { id, town } = props.route.params;
+    useEffect(() => {
+        // go get messages for this community using ID
+        (async () => {
+            const results = await axios.get(`https://unity-coms.herokuapp.com/api/community/${id}`);
+            setMessages(results.data.data)    
+        })();
+    }, [messages]);
+    
   return (
         <View style={styles.container} >
-            <View style={styles.header}>
-                <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
-                </View>
-            </View>
-            <FlatList data={chatRoomData.messages}
-            renderItem={({ item }) => <ChatMessage message={item} />}
+            <FlatList data={messages}
+            renderItem={({ item }) => <AreasChatRoom message={item} />}
             />
-            <Input  style={styles.bottom__container} />
+            <Input style={styles.bottom__container} id={id} town={town} />
         </View>
   )
 }
@@ -36,8 +46,9 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     header: {
+        flex: 1,
         width: "100%",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "center",
         padding: 5,
         // borderRadius: 15,

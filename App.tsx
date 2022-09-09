@@ -9,14 +9,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { MainScreen } from './screens/MainScreen'
 import { LocalArea } from './screens/LocalArea';
 import { Navigator } from './navigation/Navigator';
+import CreateTowns from './screens/CreateTowns';
 import { ProfilePicture } from './components/profilepicture/ProfilePicture';
 import Signup from './screens/Signup';
+import { SplashScreen } from './screens/SplashScreen';
+
 const Stack = createStackNavigator();
 
 export default function App() {
   const [image, setImage] = useState(null);
     const [msg, setMsg ] = useState('')
-
     useEffect(() => {
         (async () => {
             if(Platform.OS !== "web"){
@@ -46,23 +48,48 @@ export default function App() {
 
     const sendImage = () => {
       if(!image){
-        setMsg('Enter message!')
+        setMsg('Select Image!')
         return;
       }
       // const results = await axios.post("https://unity-coms.herokuapp.com/api/emergency", msgBody)
     }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator   
+    <NavigationContainer
+   
+    >
+      <Stack.Navigator
+      
         screenOptions={{
           headerStyle: {
             backgroundColor: '#367f86',
           },
         }}
       >
-    <Stack.Screen name="Signin" component={LoginScreen} />
-    <Stack.Screen name="Signup" component={Signup} />
+
+    <Stack.Screen name="splash" component={SplashScreen} options={{ title: "Communities" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+      <View style={{marginLeft: 10}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
+      </View>
+      )
+    }}/>
+
+    <Stack.Screen name="Signin" component={LoginScreen} options={{ title: "Communities" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+      <View style={{marginLeft: 10}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
+      </View>
+      )
+    }}/>
+
+    <Stack.Screen name="Signup" component={Signup} options={{ title: "Communities" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+      <View style={{marginLeft: 10}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
+      </View>
+      )
+    }} />
 
   <Stack.Screen name="navigator" component={Navigator} options={{ title: "Communities" , headerTitleStyle:
       {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
@@ -80,17 +107,24 @@ export default function App() {
               (
                 <ProfilePicture image={image} />
               )}
-              </TouchableOpacity>
+          </TouchableOpacity>
       </View>
     )
     }}
   />
 
     <Stack.Screen name="Communities" component={MainScreen} />
-            <Stack.Screen name="LocalArea" component={LocalArea} options={({ route }) => ({
-        headerTitle: route.params.name
-      })}  />
-      
+
+    <Stack.Screen name="LocalArea" component={LocalArea} options={({ route }) => ({
+        title:  route?.params?.town,
+       headerLeft: ()=> (
+      <View style={{marginLeft: 10}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
+      </View>
+      ),
+      })}/>
+
+    <Stack.Screen name="Create Town" component={CreateTowns} />
     </Stack.Navigator>
     </NavigationContainer>
   );
