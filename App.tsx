@@ -55,35 +55,34 @@ export default function App() {
     }
 
   return (
-    <NavigationContainer
-   
-    >
+    <NavigationContainer>
       <Stack.Navigator
-      
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#367f86',
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 0,
           },
         }}
       >
 
-    <Stack.Screen name="splash" component={SplashScreen} options={{ title: "Communities" , headerTitleStyle:
-      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+    <Stack.Screen name="splash" component={SplashScreen} options={{ title: "Uluntu" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 25, fontWeight: "bold"}, headerLeft: ()=> (
       <View style={{marginLeft: 10}}>
           <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
       </View>
       )
     }}/>
 
-    <Stack.Screen name="Signin" component={LoginScreen} options={{ title: "Communities" , headerTitleStyle:
-      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+    <Stack.Screen name="Signin" component={LoginScreen} options={{ title: "Uluntu" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 25, fontWeight: "bold"}, headerLeft: ()=> (
       <View style={{marginLeft: 10}}>
           <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
       </View>
       )
     }}/>
 
-    <Stack.Screen name="Signup" component={Signup} options={{ title: "Communities" , headerTitleStyle:
+    <Stack.Screen name="Signup" component={Signup} options={{ title: "Uluntu" , headerTitleStyle:
       {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
       <View style={{marginLeft: 10}}>
           <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
@@ -91,8 +90,8 @@ export default function App() {
       )
     }} />
 
-  <Stack.Screen name="navigator" component={Navigator} options={{ title: "Communities" , headerTitleStyle:
-      {color: '#ECB22E' , fontSize: 20}, headerLeft: ()=> (
+  <Stack.Screen name="navigator" component={Navigator} options={{ title: "Uluntu" , headerTitleStyle:
+      {color: '#ECB22E' , fontSize: 25, fontWeight: "bold"}, headerLeft: ()=> (
       <View style={{marginLeft: 10}}>
           <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
       </View>
@@ -113,15 +112,23 @@ export default function App() {
     }}
   />
 
-    <Stack.Screen name="Communities" component={MainScreen} />
+    <Stack.Screen name="Uluntu" component={MainScreen} />
 
     <Stack.Screen name="LocalArea" component={LocalArea} options={({ route }) => ({
-        title:  route?.params?.town,
+        title:  "",
        headerLeft: ()=> (
-      <View style={{marginLeft: 10}}>
-          <Image source={require('./assets/hookd.png')} style={{ width: 25, height: 30}} resizeMode='contain' />
-      </View>
+        <View style={{marginLeft: 20, flexDirection: "row", alignContent: "center", justifyContent:"center", alignItems: "center"}}>
+          <Image source={require('./assets/hookd.png')} style={{ width: 30, height: 35}} resizeMode='contain' />
+          <Text style={{color: "#ECB22E", fontSize: 26, fontWeight: "bold", marginLeft: 3}}>Uluntu</Text>
+        </View>
       ),
+      headerRight: () => (
+        <View style={{marginRight: 20, flexDirection: "row", alignContent: "center", justifyContent:"center", alignItems: "center"}}>
+          <Text style={{color: "#ECB22E", fontSize: 16}}>{route?.params?.town}</Text>
+          <AntDesign name="star" size={24} color="#ECB22E" />
+          <AntDesign name="staro" size={24} color="#ECB22E" />
+        </View>
+      )
       })}/>
 
     <Stack.Screen name="Create Town" component={CreateTowns} />

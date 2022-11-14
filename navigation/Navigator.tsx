@@ -9,30 +9,24 @@ import { EmergencyScreen } from "../screens/Emergency";
 import FavoriteScreen  from '../screens/FavoriteScreen'
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
+
 export const Navigator = () => {
-    const colorScheme = useColorScheme();
   return (
     <Tab.Navigator
       initialRouteName="Chambers"
       screenOptions={{   
-          activeTintColor: Colors[colorScheme].background,   
-          style: {
-          backgroundColor: Colors[colorScheme].tint,
-         },
-        labelStyle: {
-           fontWeight: 'bold',
-         }, 
+        tabBarHideOnKeyboard: true,
          }}
     >
       <Tab.Screen
         component={AreaScreen}
-        name="Areas"
+        name="Communities"
         options={{
-        headerStyle: {
-            backgroundColor: '#c2c2c2'
+          headerStyle: {
+          backgroundColor: "#367f86"
           },
-          tabBarIcon: ({ color: string }) => 
-          <MaterialCommunityIcons name="webhook"color="#367f86" size={25} 
+          tabBarIcon: ({ focused, color: string }) => 
+          <MaterialCommunityIcons name="webhook"color={focused ? "#ECB22E" : "#367f86"} size={25} 
           />,
           tabBarLabel: () => null
         }}
@@ -41,24 +35,33 @@ export const Navigator = () => {
         name="Emergencies"
         component={EmergencyScreen}
         options={{
-          tabBarIcon: ({ color: string }) => 
-              <MaterialCommunityIcons name="lightbulb-group" size={24} color="#367f86" />,
+          headerStyle: {
+            backgroundColor: "#367f86"
+            },
+          tabBarIcon: ({ focused, color: string }) => 
+              <MaterialCommunityIcons name="lightbulb-group" size={26} color={focused ? "#ECB22E" : "#367f86"}/>,
           tabBarLabel: () => null
         }} />
       <Tab.Screen
-        name="Local News"
+        name="Your Location"
         component={Chat}
         options={{
-          tabBarIcon: ({ color: string }) => 
-              <MaterialIcons name="dynamic-feed" size={24} color="#367f86" />,
+          headerStyle: {
+            backgroundColor: "#367f86"
+            },
+          tabBarIcon: ({ focused, color: string }) => 
+              <MaterialIcons name="dynamic-feed" size={26} color={focused ? "#ECB22E" : "#367f86"} />,
           tabBarLabel: () => null
         }} />
               <Tab.Screen
         name="Favorites"
         component={FavoriteScreen}
         options={{
-          tabBarIcon: ({ color: string }) => 
-              <Fontisto name="favorite" size={24} color="#367f86" />,
+          headerStyle: {
+            backgroundColor: "#367f86"
+            },
+          tabBarIcon: ({ focused, color: string }) => 
+              <Fontisto name="favorite" size={26} color={focused ? "#ECB22E" : "#367f86"} />,
           tabBarLabel: () => null
         }} />
     </Tab.Navigator>

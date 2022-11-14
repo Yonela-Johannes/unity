@@ -67,7 +67,7 @@ function Signup() {
                         />
                     </View>
                 </View>
-                    <CustomButton text='Sign up' onPress={signUp} type='primary' color='primary' />
+                    <CustomButton opacity={.9} text='Sign up' onPress={signUp} type='primary' color='primary' />
                     <View style={styles.bottom_container}>
                         <Text style={styles.text}>Do you have an account?</Text>
                         <CustomLink text='Sign in' onPress={() => navigation.navigate("Signin")} type='secondary' color='secondary' />

@@ -14,8 +14,7 @@ export const LocalArea = () => {
     }, [towns])
 
   return (
-        <View>   
-            {!towns && <Loader /> }        
+        <View>  
             <FlatList 
                 data={towns}
                 renderItem={({ item }) => 

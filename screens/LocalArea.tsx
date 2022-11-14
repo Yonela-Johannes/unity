@@ -14,6 +14,7 @@ export const LocalArea = (props) => {
     const [messages, setMessages] = useState();
     const [msg, setMsg ] = useState('');
     const { id, town } = props.route.params;
+    
     useEffect(() => {
         // go get messages for this community using ID
         (async () => {

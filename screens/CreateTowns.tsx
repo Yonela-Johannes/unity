@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { Text, View} from 'react-native';
+import { Text, View, StyleSheet} from 'react-native';
 import styles from './styles'
 import { Input } from 'react-native-elements';
 import { KeyboardAvoidingView, Platform  } from 'react-native';
@@ -37,20 +37,21 @@ function CreateTowns({ navigation }) {
     }
 
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
-            <StatusBar style="light" />
-            {loading && <Loader />}
-            <Text style={styles.header__text}>Create New Town</Text>
-            <View style={styles.input__container}>
-                <Input
-                    placeholder="Your Town Name"
-                    type={'text'} value={townName}
-                    onChangeText={(text) => setTownName(text)} />
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.favContainer}>
+            <View>
+                <Text style={styles.header__text}>Create New Town</Text>
+                <View style={styles.input__container}>
+                    <Input
+                        placeholder="Your Town Name"
+                        type={'text'} value={townName}
+                        onChangeText={(text) => setTownName(text)} />
+                </View>
+                <Text style={styles.msg}>{msg}</Text>
+                {/* <CustomButton onPress={createTown} text='Create Town' type='primary' color="primary" /> */}
             </View>
-            <Text style={styles.msg}>{msg}</Text>
-            <CustomButton onPress={createTown} text='Create Town' type='primary' color="primary" />
         </KeyboardAvoidingView>
     )
 }
 
 export default CreateTowns
+

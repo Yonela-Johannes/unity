@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: "100%",
         justifyContent: 'space-between',
-        padding: 8,
+        padding: 1,
         overflow: 'hidden',
     },
 
@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flex: 1,
         justifyContent: 'space-between',
+        backgroundColor: "#dedddc",
+        padding: 10
     },
     avatar: {
         width: 60,
@@ -25,9 +27,9 @@ const styles = StyleSheet.create({
 
     },
     town: {
-        fontSize: 15,
+        fontSize: 18,
         color: '#49274b',
-        marginLeft: 50
+
     },
     nameContainer: {
  

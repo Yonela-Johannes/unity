@@ -6,6 +6,40 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    mainFavContainer: {
+        flex: 1,
+        minHeight: '100%',
+    },
+    favContainer: {
+        flex: 1,
+        position: 'relative',
+        minHeight: '50%',
+        width: "100%",
+        justifyContent: 'flex-end',
+        paddingBottom: 100,
+        backgroundColor: "white",
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+    },
+    favWrapper: {
+        position: "relative",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+        bottom: 1,
+    },
+    addIcon: {
+        color: '#ECB22E',
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        marginBottom: 80,
+        marginRight: 20,
+        padding: 10,
+        borderRadius: 50,
+        backgroundColor: '#367f86',
+        zIndex: 10,
+    },
     input__container: {
         width: 300,
     },
@@ -74,7 +108,14 @@ const styles = StyleSheet.create({
     bottom_container: {
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    bottomNav: {
+        position: "absolute",
+        height: "100%",
+        zIndex: 5,
+
     }
+
 })
 
 export default styles;
